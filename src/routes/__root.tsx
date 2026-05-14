@@ -86,6 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:description", content: "AI Agent、Swift 原生开发与开发者工具的实践笔记。拆 SDK、造轮子、记踩坑。" },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4b2942bc-d396-4c2c-bbbe-001fcd9441ef" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4b2942bc-d396-4c2c-bbbe-001fcd9441ef" },
+      { name: "google-site-verification", content: "vrDXebTTxS9QYk4kUiNgbrb-zl5YdYDRbCp80STfw-M" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
