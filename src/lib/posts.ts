@@ -70,8 +70,10 @@ function parsePost(path: string, raw: string): Post {
   const { data, body } = parseFrontmatter(raw);
 
   const dateRaw = (data.date as string) ?? (dateInName ? dateInName[1] : new Date().toISOString());
-  // normalize "2026-05-14 10:25:36 +0800" → ISO
-  const dateIso = new Date(String(dateRaw).replace(" ", "T")).toISOString();
+  // normalize "2026-05-14 10:25:36 +0800" → "2026-05-14T10:25:36+0800"
+  const normalized = String(dateRaw).replace(" ", "T").replace(/\s+([+-]\d{2}:?\d{2})$/, "$1");
+  const parsed = new Date(normalized);
+  const dateIso = isNaN(parsed.getTime()) ? new Date().toISOString() : parsed.toISOString();
 
   const wordCount = body.split(/\s+/).filter(Boolean).length + body.replace(/\s/g, "").length / 2;
   const readingMinutes = Math.max(1, Math.round(wordCount / 400));
