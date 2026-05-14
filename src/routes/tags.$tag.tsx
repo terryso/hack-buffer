@@ -5,7 +5,7 @@ export const Route = createFileRoute("/tags/$tag")({
   component: TagPage,
   loader: ({ params }) => ({ posts: getPostsByTag(params.tag), tag: params.tag }),
   head: ({ loaderData }) => ({
-    meta: [{ title: loaderData ? `#${loaderData.tag} — TERRYSO::DEV` : "Tag" }],
+    meta: [{ title: loaderData ? `#${loaderData.tag} — terry.so` : "Tag" }],
   }),
 });
 

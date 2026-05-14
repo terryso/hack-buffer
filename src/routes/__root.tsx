@@ -73,10 +73,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "TERRYSO::DEV — terminal-style tech blog" },
+      { title: "terry.so — terminal-style tech blog" },
       { name: "description", content: "A markdown-driven personal tech blog. Drop a .md into content/posts/, ship instantly." },
       { name: "author", content: "Terry So" },
-      { property: "og:title", content: "TERRYSO::DEV" },
+      { property: "og:title", content: "terry.so" },
       { property: "og:description", content: "Markdown-driven personal tech blog." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

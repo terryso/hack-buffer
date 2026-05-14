@@ -3,7 +3,7 @@ import { getAllTags } from "@/lib/posts";
 
 export const Route = createFileRoute("/tags")({
   component: TagsIndex,
-  head: () => ({ meta: [{ title: "Tags — TERRYSO::DEV" }] }),
+  head: () => ({ meta: [{ title: "Tags — terry.so" }] }),
 });
 
 function TagsIndex() {

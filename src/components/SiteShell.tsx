@@ -45,7 +45,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-6 min-w-0">
             <Link to="/" className="flex items-center gap-2 shrink-0">
               <span className="text-accent">●</span>
-              <span className="font-bold tracking-tight">TERRYSO::DEV</span>
+              <span className="font-bold tracking-tight">terry.so</span>
             </Link>
             <div className="hidden md:flex items-center gap-2 text-muted-foreground truncate">
               <span>~/</span>

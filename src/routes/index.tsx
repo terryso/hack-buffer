@@ -14,11 +14,10 @@ function Index() {
       <header className="mb-12 border-l-2 border-accent pl-4">
         <pre className="text-[10px] sm:text-xs text-accent leading-tight overflow-x-auto">{`$ ls -la ~/articles | head -n ${posts.length}`}</pre>
         <h1 className="mt-3 text-2xl sm:text-3xl font-bold tracking-tight">
-          Notes from the terminal<span className="text-accent cursor-blink">_</span>
+          Agent 内核深潜<span className="text-accent cursor-blink">_</span>
         </h1>
         <p className="mt-2 text-sm text-muted-foreground font-sans max-w-xl">
-          Markdown-driven, plain-text first. Drop a <code className="text-accent">.md</code> into{" "}
-          <code className="text-accent">content/posts/</code> and it shows up here.
+          AI Agent、Swift 原生开发与开发者工具的实践笔记。拆 SDK、造轮子、记踩坑。
         </p>
       </header>
 
