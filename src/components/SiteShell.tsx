@@ -115,7 +115,7 @@ function CommandPalette({ onClose }: { onClose: () => void }) {
   const filtered = items.filter((i) => i.label.includes(q.toLowerCase()));
 
   return (
-    <div className="fixed inset-0 z-50 bg-background/70 backdrop-blur-sm grid place-items-start pt-[20vh] px-4" onClick={onClose}>
+    <div className="fixed inset-0 z-50 bg-background/70 backdrop-blur-sm flex items-start justify-center pt-[20vh] px-4" onClick={onClose}>
       <div className="w-full max-w-lg bg-surface border border-border rounded-md shadow-2xl" onClick={(e) => e.stopPropagation()}>
         <div className="flex items-center gap-2 border-b border-border px-3 py-2 text-sm">
           <span className="text-accent">$</span>
