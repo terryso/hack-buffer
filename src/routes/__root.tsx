@@ -80,16 +80,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "AI Agent、Swift 原生开发与开发者工具的实践笔记。拆 SDK、造轮子、记踩坑。" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@suchuanyi" },
+      { name: "twitter:creator", content: "@suchuanyi" },
       { name: "twitter:title", content: "terry.so — terminal-style tech blog" },
       { name: "twitter:description", content: "AI Agent、Swift 原生开发与开发者工具的实践笔记。拆 SDK、造轮子、记踩坑。" },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4b2942bc-d396-4c2c-bbbe-001fcd9441ef" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4b2942bc-d396-4c2c-bbbe-001fcd9441ef" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+    ],
+    scripts: [
       {
-        rel: "stylesheet",
-        href: appCss,
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": "https://blog.suchuanyi.dev/#website",
+              url: "https://blog.suchuanyi.dev/",
+              name: "terry.so",
+              description: "AI Agent、Swift 原生开发与开发者工具的实践笔记。",
+              inLanguage: "zh-CN",
+            },
+            {
+              "@type": "Person",
+              "@id": "https://blog.suchuanyi.dev/#person",
+              name: "Terry So (NEE)",
+              url: "https://blog.suchuanyi.dev/about",
+              sameAs: [
+                "https://github.com/terryso",
+                "https://x.com/suchuanyi",
+              ],
+            },
+          ],
+        }),
       },
     ],
   }),
