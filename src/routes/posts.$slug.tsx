@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getPostBySlug, getAllPosts, formatDate } from "@/lib/posts";
 import { Markdown } from "@/components/Markdown";
+import { Giscus } from "@/components/Giscus";
 
 export const Route = createFileRoute("/posts/$slug")({
   component: PostPage,
@@ -141,6 +142,14 @@ function PostPage() {
           )}
         </div>
       </nav>
+
+      {/* Comments */}
+      <section className="mt-16 pt-8 border-t border-border">
+        <div className="text-[11px] text-muted-foreground uppercase tracking-widest mb-4">
+          # comments
+        </div>
+        <Giscus term={post.slug} />
+      </section>
     </article>
   );
 }
