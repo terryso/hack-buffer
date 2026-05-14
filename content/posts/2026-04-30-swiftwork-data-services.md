@@ -7,7 +7,7 @@ description: "详解 SwiftWork 的数据层和服务组件：SwiftData 模型设
 tags: [AI, Swift, Agent, macOS, SwiftUI, SwiftData, Markdown, 开源]
 ---
 
-> 本文是「深入 SwiftWork」系列第 4 篇（完结篇）。[系列目录见这里](/blog/swiftwork-macos-agent-workbench)。
+> 本文是「深入 SwiftWork」系列第 4 篇（完结篇）。[系列目录见这里](/posts/swiftwork-macos-agent-workbench)。
 
 前三篇讲了事件怎么从 SDK 流到 UI、时间线怎么渲染、工具卡片怎么可视化。这篇收尾，看 SwiftWork 的基础设施——数据怎么存、状态怎么恢复、Markdown 怎么渲染、代码怎么高亮、API Key 怎么管。
 
@@ -383,10 +383,10 @@ SwiftWork 的数据层和服务组件各司其职：
 
 **系列文章**：
 
-- **第 0 篇**：[用 SwiftUI 构建一个 Agent 可视化工作台](/blog/swiftwork-macos-agent-workbench)
-- **第 1 篇**：[SDK 集成层——把 AsyncStream 接进 SwiftUI](/blog/swiftwork-sdk-integration)
-- **第 2 篇**：[事件时间线——18 种事件的可视化与性能](/blog/swiftwork-event-timeline)
-- **第 3 篇**：[Tool Card——可扩展的工具可视化系统](/blog/swiftwork-tool-card)
+- **第 0 篇**：[用 SwiftUI 构建一个 Agent 可视化工作台](/posts/swiftwork-macos-agent-workbench)
+- **第 1 篇**：[SDK 集成层——把 AsyncStream 接进 SwiftUI](/posts/swiftwork-sdk-integration)
+- **第 2 篇**：[事件时间线——18 种事件的可视化与性能](/posts/swiftwork-event-timeline)
+- **第 3 篇**：[Tool Card——可扩展的工具可视化系统](/posts/swiftwork-tool-card)
 - **第 4 篇**：数据层与服务——SwiftData、状态恢复与 Markdown 渲染（本文）
 
 **相关链接**：

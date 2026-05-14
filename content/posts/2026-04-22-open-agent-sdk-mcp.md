@@ -7,7 +7,7 @@ description: "分析 Open Agent SDK 的 MCP 集成：五种传输配置、MCPCli
 tags: [AI, Swift, Agent, SDK, MCP, 开源]
 ---
 
-> 本文是「深入 Open Agent SDK (Swift)」系列第三篇。[系列目录见这里](/blog/open-agent-sdk-swift)。
+> 本文是「深入 Open Agent SDK (Swift)」系列第三篇。[系列目录见这里](/posts/open-agent-sdk-swift)。
 
 上一篇看了 SDK 内置的 34 个工具——文件读写、Bash 执行、代码搜索，覆盖了常见的开发场景。但 Agent 的能力不可能只靠内置工具撑满。你需要连接数据库、调用企业 API、操作内部系统——这些事情需要一个标准化的接入方式。
 
@@ -497,12 +497,12 @@ print(result.text)
 
 **系列文章**：
 
-- **第 0 篇**：[Open Agent SDK (Swift)：用原生 Swift 并发构建 AI Agent 应用](/blog/open-agent-sdk-swift)
-- **第 1 篇**：[Agent Loop 内核：从 prompt 到多轮对话的完整运转机制](/blog/open-agent-sdk-agent-loop)
-- **第 2 篇**：[34 个工具的背后：工具协议、三层架构与自定义扩展](/blog/open-agent-sdk-tools)
+- **第 0 篇**：[Open Agent SDK (Swift)：用原生 Swift 并发构建 AI Agent 应用](/posts/open-agent-sdk-swift)
+- **第 1 篇**：[Agent Loop 内核：从 prompt 到多轮对话的完整运转机制](/posts/open-agent-sdk-agent-loop)
+- **第 2 篇**：[34 个工具的背后：工具协议、三层架构与自定义扩展](/posts/open-agent-sdk-tools)
 - **第 3 篇**：MCP 集成实战：让 Agent 连接万物（本文）
-- **第 4 篇**：[多 Agent 协作：子代理、团队与任务编排](/blog/open-agent-sdk-multi-agent)
-- **第 5 篇**：[会话持久化与安全防线](/blog/open-agent-sdk-session-security)
-- **第 6 篇**：[多 LLM 提供商与运行时控制](/blog/open-agent-sdk-multi-llm)
+- **第 4 篇**：[多 Agent 协作：子代理、团队与任务编排](/posts/open-agent-sdk-multi-agent)
+- **第 5 篇**：[会话持久化与安全防线](/posts/open-agent-sdk-session-security)
+- **第 6 篇**：[多 LLM 提供商与运行时控制](/posts/open-agent-sdk-multi-llm)
 
 **GitHub**：[terryso/open-agent-sdk-swift](https://github.com/terryso/open-agent-sdk-swift)

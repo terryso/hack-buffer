@@ -7,7 +7,7 @@ description: "详解 SwiftWork 的事件时间线实现：TimelineView 如何分
 tags: [AI, Swift, Agent, macOS, SwiftUI, 可视化, 性能, 开源]
 ---
 
-> 本文是「深入 SwiftWork」系列第 2 篇。[系列目录见这里](/blog/swiftwork-macos-agent-workbench)。
+> 本文是「深入 SwiftWork」系列第 2 篇。[系列目录见这里](/posts/swiftwork-macos-agent-workbench)。
 
 第 1 篇讲了 AgentBridge 怎么把 SDK 的 `AsyncStream<SDKMessage>` 变成 `[AgentEvent]`。这篇看 `[AgentEvent]` 变成什么——TimelineView 怎么渲染 18 种事件、怎么处理滚屏行为、怎么在事件量很大时保持流畅。
 
@@ -364,11 +364,11 @@ TimelineView 的设计可以概括为三个子系统：
 
 **系列文章**：
 
-- **第 0 篇**：[用 SwiftUI 构建一个 Agent 可视化工作台](/blog/swiftwork-macos-agent-workbench)
-- **第 1 篇**：[SDK 集成层——把 AsyncStream 接进 SwiftUI](/blog/swiftwork-sdk-integration)
+- **第 0 篇**：[用 SwiftUI 构建一个 Agent 可视化工作台](/posts/swiftwork-macos-agent-workbench)
+- **第 1 篇**：[SDK 集成层——把 AsyncStream 接进 SwiftUI](/posts/swiftwork-sdk-integration)
 - **第 2 篇**：事件时间线——18 种事件的可视化与性能（本文）
-- **第 3 篇**：[Tool Card——可扩展的工具可视化系统](/blog/swiftwork-tool-card)
-- **第 4 篇**：[数据层与服务——SwiftData、状态恢复与 Markdown 渲染](/blog/swiftwork-data-services)
+- **第 3 篇**：[Tool Card——可扩展的工具可视化系统](/posts/swiftwork-tool-card)
+- **第 4 篇**：[数据层与服务——SwiftData、状态恢复与 Markdown 渲染](/posts/swiftwork-data-services)
 
 **相关链接**：
 

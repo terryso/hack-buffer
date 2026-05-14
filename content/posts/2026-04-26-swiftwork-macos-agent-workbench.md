@@ -7,7 +7,7 @@ description: "SwiftWork 是一个 macOS 原生 AI Agent 工作台，基于 Open 
 tags: [AI, Swift, Agent, macOS, SwiftUI, 可视化, 开源]
 ---
 
-> 本文是「深入 SwiftWork」系列第 0 篇。[系列目录见这里](/blog/swiftwork-macos-agent-workbench)。
+> 本文是「深入 SwiftWork」系列第 0 篇。[系列目录见这里](/posts/swiftwork-macos-agent-workbench)。
 
 前面七篇文章加上番外篇，我们把 [Open Agent SDK](https://github.com/terryso/open-agent-sdk-swift) 的内部机制翻了个底朝天——Agent Loop、工具系统、MCP 集成、多 Agent 协作、会话持久化、多 LLM 支持。番外篇还把 SDK 塞进了一个 macOS 原生应用 Motive 里跑了跑。
 
