@@ -109,7 +109,7 @@ function Index() {
                 ← prev
               </Link>
             ) : (
-              <span className="inline-block px-4 py-2 border border-border/50 text-muted-foreground/40 cursor-not-allowed">← prev</span>
+              <span className="inline-block px-4 py-2 border border-border/50 text-muted-foreground cursor-not-allowed">← prev</span>
             )}
           </div>
 
@@ -140,7 +140,7 @@ function Index() {
                 next →
               </Link>
             ) : (
-              <span className="inline-block px-4 py-2 border border-border/50 text-muted-foreground/40 cursor-not-allowed">next →</span>
+              <span className="inline-block px-4 py-2 border border-border/50 text-muted-foreground cursor-not-allowed">next →</span>
             )}
           </div>
         </nav>
