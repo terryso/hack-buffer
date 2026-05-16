@@ -121,6 +121,7 @@ function CommandPalette({ onClose }: { onClose: () => void }) {
           <span className="text-accent">$</span>
           <input
             autoFocus
+            aria-label="Command palette search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             onKeyDown={(e) => {

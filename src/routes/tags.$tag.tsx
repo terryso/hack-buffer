@@ -45,7 +45,7 @@ function TagPage() {
             <div className="grid grid-cols-[2.5rem_1fr] md:grid-cols-[3rem_1fr_8rem] gap-3">
               <div className="text-muted-foreground text-xs pt-1">{String(i + 1).padStart(2, "0")}</div>
               <div>
-                <h3 className="font-bold group-hover:text-accent transition-colors">{post.title}</h3>
+                <h2 className="font-bold group-hover:text-accent transition-colors">{post.title}</h2>
                 {post.description && (
                   <p className="text-muted-foreground text-sm font-sans mt-1 line-clamp-1">{post.description}</p>
                 )}
