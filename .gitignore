@@ -30,3 +30,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# X automation
+x-auto/node_modules/
+x-auto/cookies.json
+x-auto/tweets.json
+x-auto/screenshots/
