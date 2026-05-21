@@ -11,9 +11,9 @@ export const Route = createFileRoute("/tags/$tag")({
     return {
       meta: [
         { title: `#${tag} — terry.so` },
-        { name: "description", content: `terry.so 上标签为 #${tag} 的全部文章（${count} 篇），按时间倒序排列。` },
+        { name: "description", content: `terry.so 上标签为 #${tag} 的全部技术文章合集（共 ${count} 篇），按发布时间倒序排列，涵盖相关实战笔记与踩坑记录。` },
         { property: "og:title", content: `#${tag} — terry.so` },
-        { property: "og:description", content: `Posts tagged #${tag} on terry.so — ${count} article(s).` },
+        { property: "og:description", content: `浏览 terry.so 上标签为 #${tag} 的全部技术文章（共 ${count} 篇），按时间倒序排列。` },
         { property: "og:url", content: url },
       ],
       links: [{ rel: "canonical", href: url }],

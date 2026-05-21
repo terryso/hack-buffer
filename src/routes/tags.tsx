@@ -6,9 +6,9 @@ export const Route = createFileRoute("/tags")({
   head: () => ({
     meta: [
       { title: "Tags — terry.so" },
-      { name: "description", content: "按标签浏览 terry.so 的全部文章：AI Agent、Swift、macOS、开发者工具等技术话题索引。" },
+      { name: "description", content: "按标签浏览 terry.so 上的全部技术文章索引，覆盖 AI Agent、Swift、macOS 原生开发、开发者工具与造轮子实战笔记。" },
       { property: "og:title", content: "All tags — terry.so" },
-      { property: "og:description", content: "按标签浏览所有文章：AI Agent、Swift、macOS、开发者工具等。" },
+      { property: "og:description", content: "按标签浏览 terry.so 上的全部技术文章：AI Agent、Swift、macOS、开发者工具等话题索引。" },
       { property: "og:url", content: "https://blog.suchuanyi.dev/tags" },
     ],
     links: [{ rel: "canonical", href: "https://blog.suchuanyi.dev/tags" }],
