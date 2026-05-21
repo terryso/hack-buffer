@@ -14,7 +14,9 @@ export const Route = createFileRoute("/posts/$slug")({
     if (!loaderData) return {};
     const { post } = loaderData;
     const url = `https://blog.suchuanyi.dev/posts/${params.slug}`;
-    const desc = post.description ?? post.title;
+    const fallback = `${post.title} — Terry So 在 terry.so 上的技术文章，记录 AI Agent、Swift/macOS 原生开发与开发者工具实战笔记。`;
+    const desc = post.description && post.description.length >= 50 ? post.description : fallback;
+    const ogImage = "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4b2942bc-d396-4c2c-bbbe-001fcd9441ef";
     return {
       meta: [
         { title: `${post.title} — terry.so` },
@@ -23,6 +25,8 @@ export const Route = createFileRoute("/posts/$slug")({
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
+        { property: "og:image", content: ogImage },
+        { name: "twitter:image", content: ogImage },
         { property: "article:published_time", content: new Date(post.date).toISOString() },
         ...(post.tags ?? []).map((t: string) => ({ property: "article:tag", content: t })),
       ],
