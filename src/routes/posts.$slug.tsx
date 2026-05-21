@@ -25,6 +25,8 @@ export const Route = createFileRoute("/posts/$slug")({
         { property: "og:description", content: desc },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
+        { property: "og:image", content: ogImage },
+        { name: "twitter:image", content: ogImage },
         { property: "article:published_time", content: new Date(post.date).toISOString() },
         ...(post.tags ?? []).map((t: string) => ({ property: "article:tag", content: t })),
       ],
