@@ -16,6 +16,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as TagsTagRouteImport } from './routes/tags.$tag'
 import { Route as PostsSlugRouteImport } from './routes/posts.$slug'
 import { Route as ApiPublicSyncPostsRouteImport } from './routes/api/public/sync-posts'
+import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
 const TagsRoute = TagsRouteImport.update({
   id: '/tags',
@@ -52,6 +53,12 @@ const ApiPublicSyncPostsRoute = ApiPublicSyncPostsRouteImport.update({
   path: '/api/public/sync-posts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +68,7 @@ export interface FileRoutesByFullPath {
   '/posts/$slug': typeof PostsSlugRoute
   '/tags/$tag': typeof TagsTagRoute
   '/api/public/sync-posts': typeof ApiPublicSyncPostsRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +78,7 @@ export interface FileRoutesByTo {
   '/posts/$slug': typeof PostsSlugRoute
   '/tags/$tag': typeof TagsTagRoute
   '/api/public/sync-posts': typeof ApiPublicSyncPostsRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +89,7 @@ export interface FileRoutesById {
   '/posts/$slug': typeof PostsSlugRoute
   '/tags/$tag': typeof TagsTagRoute
   '/api/public/sync-posts': typeof ApiPublicSyncPostsRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +101,7 @@ export interface FileRouteTypes {
     | '/posts/$slug'
     | '/tags/$tag'
     | '/api/public/sync-posts'
+    | '/lovable/email/queue/process'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +111,7 @@ export interface FileRouteTypes {
     | '/posts/$slug'
     | '/tags/$tag'
     | '/api/public/sync-posts'
+    | '/lovable/email/queue/process'
   id:
     | '__root__'
     | '/'
@@ -109,6 +121,7 @@ export interface FileRouteTypes {
     | '/posts/$slug'
     | '/tags/$tag'
     | '/api/public/sync-posts'
+    | '/lovable/email/queue/process'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -118,6 +131,7 @@ export interface RootRouteChildren {
   TagsRoute: typeof TagsRouteWithChildren
   PostsSlugRoute: typeof PostsSlugRoute
   ApiPublicSyncPostsRoute: typeof ApiPublicSyncPostsRoute
+  LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -171,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicSyncPostsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -191,6 +212,7 @@ const rootRouteChildren: RootRouteChildren = {
   TagsRoute: TagsRouteWithChildren,
   PostsSlugRoute: PostsSlugRoute,
   ApiPublicSyncPostsRoute: ApiPublicSyncPostsRoute,
+  LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
