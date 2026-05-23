@@ -79,7 +79,24 @@ After editing or adding a post, push to GitHub then run:
 
 The endpoint is idempotent — unchanged posts cost nothing.
 
+### Run as a pure static blog (no AI, no server)
+
+The AI features (TL;DR, related posts, semantic search, `/api/public/sync-posts`) are gated behind a single env var. To strip everything server-side and run as a classic static blog:
+
+```bash
+# .env
+VITE_ENABLE_AI=false
+```
+
+With this flag off:
+- `SearchBox` and `PostAiPanels` don't render — no server function calls
+- `/api/public/sync-posts` returns `503`
+- No `LOVABLE_API_KEY` or Lovable Cloud / Supabase runtime calls needed
+
+Default is **on** (`VITE_ENABLE_AI` unset or `"true"`), matching the live deployment.
+
 ---
+
 
 ## 🤝 Built with Lovable
 
