@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { getPostBySlug, getAllPosts, formatDate } from "@/lib/posts";
 import { Markdown } from "@/components/Markdown";
 import { Giscus } from "@/components/Giscus";
+import { PostAiPanels } from "@/components/PostAiPanels";
 
 export const Route = createFileRoute("/posts/$slug")({
   component: PostPage,

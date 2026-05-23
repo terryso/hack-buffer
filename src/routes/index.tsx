@@ -3,6 +3,7 @@ import { zodValidator, fallback } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { useEffect, useRef } from "react";
 import { getAllPosts, formatDate } from "@/lib/posts";
+import { SearchBox } from "@/components/SearchBox";
 
 const PER_PAGE = 10;
 
@@ -86,6 +87,8 @@ function Index() {
           AI Agent、Swift 原生开发与开发者工具的实践笔记。拆 SDK、造轮子、记踩坑。
         </p>
       </header>
+
+      <SearchBox />
 
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">recent_buffers</h2>
