@@ -111,7 +111,7 @@ function PostPage() {
         </div>
       </header>
 
-      <PostAiPanels slug={post.slug} position="top" />
+      {AI_ENABLED && <PostAiPanels slug={post.slug} position="top" />}
 
       <Markdown>{post.content}</Markdown>
 
