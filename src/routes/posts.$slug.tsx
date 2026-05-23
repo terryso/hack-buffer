@@ -115,7 +115,7 @@ function PostPage() {
 
       <Markdown>{post.content}</Markdown>
 
-      <PostAiPanels slug={post.slug} position="bottom" />
+      {AI_ENABLED && <PostAiPanels slug={post.slug} position="bottom" />}
 
       {/* Tags */}
       {post.tags.length > 0 && (
