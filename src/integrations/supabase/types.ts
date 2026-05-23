@@ -14,13 +14,47 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      posts_ai: {
+        Row: {
+          content_hash: string
+          embedding: string
+          slug: string
+          tldr: string
+          updated_at: string
+        }
+        Insert: {
+          content_hash: string
+          embedding: string
+          slug: string
+          tldr: string
+          updated_at?: string
+        }
+        Update: {
+          content_hash?: string
+          embedding?: string
+          slug?: string
+          tldr?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      match_posts: {
+        Args: {
+          exclude_slug?: string
+          match_count?: number
+          query_embedding: string
+        }
+        Returns: {
+          similarity: number
+          slug: string
+          tldr: string
+        }[]
+      }
     }
     Enums: {
       [_ in never]: never
