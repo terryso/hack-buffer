@@ -110,7 +110,11 @@ function PostPage() {
         </div>
       </header>
 
+      <PostAiPanels slug={post.slug} position="top" />
+
       <Markdown>{post.content}</Markdown>
+
+      <PostAiPanels slug={post.slug} position="bottom" />
 
       {/* Tags */}
       {post.tags.length > 0 && (
