@@ -3,6 +3,7 @@ import { getPostBySlug, getAllPosts, formatDate } from "@/lib/posts";
 import { Markdown } from "@/components/Markdown";
 import { Giscus } from "@/components/Giscus";
 import { PostAiPanels } from "@/components/PostAiPanels";
+import { AI_ENABLED } from "@/lib/ai-flag";
 
 export const Route = createFileRoute("/posts/$slug")({
   component: PostPage,
