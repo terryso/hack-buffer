@@ -4,6 +4,7 @@ import { z } from "zod";
 import { useEffect, useRef } from "react";
 import { getAllPosts, formatDate } from "@/lib/posts";
 import { SearchBox } from "@/components/SearchBox";
+import { AI_ENABLED } from "@/lib/ai-flag";
 
 const PER_PAGE = 10;
 
