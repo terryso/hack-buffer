@@ -79,7 +79,24 @@ bun dev
 
 接口是幂等的 —— 没变过的文章不会重算,也不花钱。
 
+### 当成纯静态博客跑(不要 AI、不要服务端)
+
+所有 AI 能力(TL;DR、相关文章、语义搜索、`/api/public/sync-posts`)由一个环境变量统一控制。想剥掉服务端,回到经典静态博客形态:
+
+```bash
+# .env
+VITE_ENABLE_AI=false
+```
+
+关掉后:
+- `SearchBox` 和 `PostAiPanels` 不渲染,不会发起任何 server function 调用
+- `/api/public/sync-posts` 直接返回 `503`
+- 运行时不再需要 `LOVABLE_API_KEY`,也不会调用 Lovable Cloud / Supabase
+
+默认是**开启**的(`VITE_ENABLE_AI` 未设置或为 `"true"`),与线上部署一致。
+
 ---
+
 
 ## 🤝 用 Lovable 搭的
 
