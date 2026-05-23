@@ -15,6 +15,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TagsTagRouteImport } from './routes/tags.$tag'
 import { Route as PostsSlugRouteImport } from './routes/posts.$slug'
+import { Route as ApiPublicSyncPostsRouteImport } from './routes/api/public/sync-posts'
 
 const TagsRoute = TagsRouteImport.update({
   id: '/tags',
@@ -46,6 +47,11 @@ const PostsSlugRoute = PostsSlugRouteImport.update({
   path: '/posts/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicSyncPostsRoute = ApiPublicSyncPostsRouteImport.update({
+  id: '/api/public/sync-posts',
+  path: '/api/public/sync-posts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/tags': typeof TagsRouteWithChildren
   '/posts/$slug': typeof PostsSlugRoute
   '/tags/$tag': typeof TagsTagRoute
+  '/api/public/sync-posts': typeof ApiPublicSyncPostsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/tags': typeof TagsRouteWithChildren
   '/posts/$slug': typeof PostsSlugRoute
   '/tags/$tag': typeof TagsTagRoute
+  '/api/public/sync-posts': typeof ApiPublicSyncPostsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/tags': typeof TagsRouteWithChildren
   '/posts/$slug': typeof PostsSlugRoute
   '/tags/$tag': typeof TagsTagRoute
+  '/api/public/sync-posts': typeof ApiPublicSyncPostsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +90,16 @@ export interface FileRouteTypes {
     | '/tags'
     | '/posts/$slug'
     | '/tags/$tag'
+    | '/api/public/sync-posts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/sitemap.xml' | '/tags' | '/posts/$slug' | '/tags/$tag'
+  to:
+    | '/'
+    | '/about'
+    | '/sitemap.xml'
+    | '/tags'
+    | '/posts/$slug'
+    | '/tags/$tag'
+    | '/api/public/sync-posts'
   id:
     | '__root__'
     | '/'
@@ -91,6 +108,7 @@ export interface FileRouteTypes {
     | '/tags'
     | '/posts/$slug'
     | '/tags/$tag'
+    | '/api/public/sync-posts'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -99,6 +117,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TagsRoute: typeof TagsRouteWithChildren
   PostsSlugRoute: typeof PostsSlugRoute
+  ApiPublicSyncPostsRoute: typeof ApiPublicSyncPostsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PostsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/sync-posts': {
+      id: '/api/public/sync-posts'
+      path: '/api/public/sync-posts'
+      fullPath: '/api/public/sync-posts'
+      preLoaderRoute: typeof ApiPublicSyncPostsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -164,17 +190,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TagsRoute: TagsRouteWithChildren,
   PostsSlugRoute: PostsSlugRoute,
+  ApiPublicSyncPostsRoute: ApiPublicSyncPostsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
