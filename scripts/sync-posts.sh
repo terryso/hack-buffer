@@ -14,5 +14,10 @@ case "$TARGET" in
   *) echo "usage: $0 [dev|prod]" >&2; exit 1 ;;
 esac
 
+if [[ -z "${SYNC_SECRET:-}" ]]; then
+  echo "error: SYNC_SECRET env var is required" >&2
+  exit 1
+fi
+
 echo "→ POST $URL"
-curl -fsS -X POST "$URL" | python3 -m json.tool
+curl -fsS -X POST -H "Authorization: Bearer $SYNC_SECRET" "$URL" | python3 -m json.tool
