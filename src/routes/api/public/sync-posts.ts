@@ -14,17 +14,28 @@ const disabled = () =>
     { status: 503 },
   );
 
+const unauthorized = () =>
+  Response.json({ error: "Unauthorized" }, { status: 401 });
+
+function checkAuth(request: Request): boolean {
+  const expected = process.env.SYNC_SECRET;
+  if (!expected) return false; // fail-closed when secret not configured
+  const header = request.headers.get("authorization") ?? "";
+  const token = header.startsWith("Bearer ") ? header.slice(7) : "";
+  return token.length > 0 && token === expected;
+}
+
+const handle = async (request: Request) => {
+  if (!AI_ENABLED) return disabled();
+  if (!checkAuth(request)) return unauthorized();
+  return Response.json(await syncAllPosts());
+};
+
 export const Route = createFileRoute("/api/public/sync-posts")({
   server: {
     handlers: {
-      GET: async () => {
-        if (!AI_ENABLED) return disabled();
-        return Response.json(await syncAllPosts());
-      },
-      POST: async () => {
-        if (!AI_ENABLED) return disabled();
-        return Response.json(await syncAllPosts());
-      },
+      GET: async ({ request }) => handle(request),
+      POST: async ({ request }) => handle(request),
     },
   },
 });
