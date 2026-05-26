@@ -193,9 +193,17 @@ export const getPostBundle = createServerFn({ method: "GET" })
 
 // Semantic search over all indexed posts.
 export const searchPosts = createServerFn({ method: "POST" })
-  .inputValidator((data: { query: string }) => data)
-  .handler(async ({ data }) => {
+  .inputValidator((data: { query: string }) => {
+    if (!data || typeof data.query !== "string") {
+      throw new Error("query must be a string");
+    }
     const q = data.query.trim();
+    if (q.length === 0) throw new Error("query is required");
+    if (q.length > 500) throw new Error("query too long (max 500 chars)");
+    return { query: q };
+  })
+  .handler(async ({ data }) => {
+    const q = data.query;
     if (!q) return { results: [] as SearchResult[] };
     const queryEmbedding = await embed(q);
     const { data: matches, error } = await supabaseAdmin.rpc("match_posts", {
