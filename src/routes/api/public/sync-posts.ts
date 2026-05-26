@@ -5,7 +5,7 @@
 // Disabled when VITE_ENABLE_AI !== "true" — responds 503 so the site can
 // run as a pure static blog with zero server-side dependencies.
 import { createFileRoute } from "@tanstack/react-router";
-import { syncAllPosts } from "@/lib/posts-ai.functions";
+import { syncAllPostsServer } from "@/lib/posts-sync.server";
 import { AI_ENABLED } from "@/lib/ai-flag";
 
 const disabled = () =>
@@ -28,7 +28,7 @@ function checkAuth(request: Request): boolean {
 const handle = async (request: Request) => {
   if (!AI_ENABLED) return disabled();
   if (!checkAuth(request)) return unauthorized();
-  return Response.json(await syncAllPosts());
+  return Response.json(await syncAllPostsServer());
 };
 
 export const Route = createFileRoute("/api/public/sync-posts")({
