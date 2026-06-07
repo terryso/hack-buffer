@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useRouter } from "@tanstack/react-router";
+import { Github } from "lucide-react";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   const location = useLocation();
