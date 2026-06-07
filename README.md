@@ -67,17 +67,33 @@ scripts/sync-posts.sh       Local trigger for the sync endpoint
 
 ```bash
 bun install
+cp .env.example .env   # fill in your own values — see Env vars below
 bun dev
 ```
 
 After editing or adding a post, push to GitHub then run:
 
 ```bash
-./scripts/sync-posts.sh        # hits dev preview
+export SYNC_SECRET=<the same secret you stored in Lovable / your host>
+./scripts/sync-posts.sh        # hits the dev preview URL
 ./scripts/sync-posts.sh prod   # hits production (after a Lovable publish)
 ```
 
 The endpoint is idempotent — unchanged posts cost nothing.
+
+> **Forking?** The `dev` / `prod` URLs in `scripts/sync-posts.sh` are hard-coded to this project. Edit the script to point at your own Lovable project ID and your own production domain.
+
+### Env vars
+
+| Var | Where | Purpose |
+|---|---|---|
+| `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` / `VITE_SUPABASE_PROJECT_ID` | client + server | Auto-injected by Lovable Cloud; required for AI features |
+| `SUPABASE_SERVICE_ROLE_KEY` | server only | Used by `/api/public/sync-posts` to upsert embeddings |
+| `LOVABLE_API_KEY` | server only | Auth for Lovable AI Gateway (embeddings + TL;DR) |
+| `SYNC_SECRET` | server + your terminal | Bearer token for `/api/public/sync-posts`. Generate: `openssl rand -hex 32` |
+| `VITE_ENABLE_AI` | client + server | Master switch for AI features (default `true`) |
+
+On Lovable, set `LOVABLE_API_KEY` and `SYNC_SECRET` via the **Secrets** panel; the Supabase vars are managed for you.
 
 ### Run as a pure static blog (no AI, no server)
 
@@ -94,6 +110,25 @@ With this flag off:
 - No `LOVABLE_API_KEY` or Lovable Cloud / Supabase runtime calls needed
 
 Default is **on** (`VITE_ENABLE_AI` unset or `"true"`), matching the live deployment.
+
+---
+
+## 🍴 Make it your own
+
+1. **Fork** this repo → <https://github.com/terryso/hack-buffer/fork>
+2. **Open in Lovable** — import the fork. Lovable Cloud provisions a fresh Supabase project + AI gateway key automatically.
+3. **Replace content** in `content/posts/` with your own markdown (frontmatter: `title`, `date`, `description`, `tags`).
+4. **Rebrand** — edit:
+   - `src/routes/__root.tsx` — site title, description, OG image, JSON-LD
+   - `src/routes/about.tsx` — bio + links
+   - `src/components/SiteShell.tsx` — top-left wordmark (`terry.so`)
+   - `src/styles.css` — `oklch` color tokens
+   - `public/favicon.svg`, `public/robots.txt`, `public/llms.txt`
+5. **Update `scripts/sync-posts.sh`** with your Lovable project ID + production domain.
+6. **Generate `SYNC_SECRET`** (`openssl rand -hex 32`), store it in Lovable Secrets.
+7. **Publish on Lovable** (or self-host — it's plain TanStack Start, deploys to Cloudflare Workers / any Node host). Then run `./scripts/sync-posts.sh prod` to index your posts.
+
+
 
 ---
 

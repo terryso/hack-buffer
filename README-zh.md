@@ -67,17 +67,33 @@ scripts/sync-posts.sh       本地调用同步接口的脚本
 
 ```bash
 bun install
+cp .env.example .env   # 填入你自己的值,详见下方 "环境变量"
 bun dev
 ```
 
 写完或改完文章,推到 GitHub 后:
 
 ```bash
+export SYNC_SECRET=<和 Lovable Secrets 里同一个值>
 ./scripts/sync-posts.sh        # 打到 dev 预览
 ./scripts/sync-posts.sh prod   # 打到生产(需要先在 Lovable 上 Publish 过新版本)
 ```
 
 接口是幂等的 —— 没变过的文章不会重算,也不花钱。
+
+> **Fork 之后**:`scripts/sync-posts.sh` 里的 `dev` / `prod` URL 是硬编码到这个项目的。Fork 后请改成你自己的 Lovable 项目 ID 和生产域名。
+
+### 环境变量
+
+| 变量 | 作用域 | 用途 |
+|---|---|---|
+| `VITE_SUPABASE_URL` / `VITE_SUPABASE_PUBLISHABLE_KEY` / `VITE_SUPABASE_PROJECT_ID` | 前端 + 服务端 | Lovable Cloud 自动注入,AI 功能必需 |
+| `SUPABASE_SERVICE_ROLE_KEY` | 仅服务端 | `/api/public/sync-posts` 写入 embeddings 用 |
+| `LOVABLE_API_KEY` | 仅服务端 | Lovable AI Gateway 鉴权(embedding + TL;DR) |
+| `SYNC_SECRET` | 服务端 + 本地 shell | `/api/public/sync-posts` 的 Bearer token。生成:`openssl rand -hex 32` |
+| `VITE_ENABLE_AI` | 前端 + 服务端 | AI 总开关(默认 `true`) |
+
+在 Lovable 上,`LOVABLE_API_KEY` 和 `SYNC_SECRET` 通过 **Secrets** 面板设置;Supabase 相关变量平台会自动管理。
 
 ### 当成纯静态博客跑(不要 AI、不要服务端)
 
@@ -94,6 +110,23 @@ VITE_ENABLE_AI=false
 - 运行时不再需要 `LOVABLE_API_KEY`,也不会调用 Lovable Cloud / Supabase
 
 默认是**开启**的(`VITE_ENABLE_AI` 未设置或为 `"true"`),与线上部署一致。
+
+---
+
+## 🍴 让它变成你自己的
+
+1. **Fork** 仓库 → <https://github.com/terryso/hack-buffer/fork>
+2. **在 Lovable 里打开** —— 导入你 fork 的仓库,Lovable Cloud 会自动给你开一个全新的 Supabase 项目和 AI gateway key。
+3. **替换内容**:把 `content/posts/` 下的 markdown 换成你自己的(frontmatter:`title`、`date`、`description`、`tags`)。
+4. **换品牌**,改这些地方:
+   - `src/routes/__root.tsx` —— 站点标题、描述、OG 图、JSON-LD
+   - `src/routes/about.tsx` —— 自我介绍和链接
+   - `src/components/SiteShell.tsx` —— 左上角站名(`terry.so`)
+   - `src/styles.css` —— `oklch` 配色 token
+   - `public/favicon.svg`、`public/robots.txt`、`public/llms.txt`
+5. **改 `scripts/sync-posts.sh`** —— 换成你自己的 Lovable 项目 ID 和生产域名。
+6. **生成 `SYNC_SECRET`**(`openssl rand -hex 32`),存进 Lovable Secrets。
+7. **在 Lovable 上 Publish**(或自己部署 —— 这是标准的 TanStack Start 项目,Cloudflare Workers / 任何 Node host 都行)。完成后跑 `./scripts/sync-posts.sh prod` 索引文章。
 
 ---
 

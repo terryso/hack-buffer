@@ -69,6 +69,46 @@ function About() {
           This site is plain-text first. Every post is a Markdown file in{" "}
           <code>content/posts/</code>. Built with TanStack Start + Vite, deployed on Cloudflare.
         </p>
+      </div>
+
+      {/* Fork CTA */}
+      <section className="mt-10 border border-border bg-surface/40 p-5 font-mono text-sm">
+        <pre className="text-[10px] text-accent mb-2">$ git clone &amp;&amp; make it yours</pre>
+        <h2 className="text-lg font-bold mb-2">Fork this blog</h2>
+        <p className="text-muted-foreground font-sans text-sm leading-relaxed mb-4">
+          整个站点（UI、RAG 管线、增量索引、部署配置）都开源在 GitHub。
+          Fork 一份、把 <code className="text-accent">content/posts/</code> 换成你自己的 markdown，AI 摘要、相关推荐、语义搜索开箱即用。
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <a
+            href="https://github.com/terryso/hack-buffer/fork"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 border border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-colors"
+          >
+            <span>⑂</span> Fork on GitHub
+          </a>
+          <a
+            href="https://github.com/terryso/hack-buffer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 border border-border hover:border-accent/60 hover:text-accent transition-colors"
+          >
+            View source
+          </a>
+          <a
+            href="https://github.com/terryso/hack-buffer#-local-development"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 border border-border hover:border-accent/60 hover:text-accent transition-colors"
+          >
+            Setup guide →
+          </a>
+        </div>
+      </section>
+
+      <div className="markdown mt-10">
+
 
         <h2>Keyboard shortcuts</h2>
         <ul>
