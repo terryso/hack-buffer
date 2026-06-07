@@ -2,6 +2,8 @@
 
 [中文版](./README-zh.md)
 
+![Homepage screenshot](public/screenshot-home.png)
+
 A terminal-style personal tech blog built end-to-end on [Lovable](https://lovable.dev), with a lightweight RAG pipeline baked in: every post gets an AI-generated TL;DR, three semantically-related posts, and the homepage answers natural-language queries.
 
 > Live: <https://blog.suchuanyi.dev>
