@@ -2,6 +2,8 @@
 
 [English](./README.md)
 
+![首页截图](public/screenshot-home.png)
+
 一个 terminal 风格的个人技术博客,完全在 [Lovable](https://lovable.dev) 上端到端搭建,内置了一条轻量级 RAG 管线:每篇文章自动生成 TL;DR、推荐 3 篇语义相关的旧文,首页支持自然语言搜索。
 
 > 线上: <https://blog.suchuanyi.dev>
