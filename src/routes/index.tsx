@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const all = getAllPosts();
-  const { page } = Route.useSearch();
+  const { page = 1 } = Route.useSearch();
   const totalPages = Math.max(1, Math.ceil(all.length / PER_PAGE));
   const current = Math.min(Math.max(1, page), totalPages);
   const start = (current - 1) * PER_PAGE;
