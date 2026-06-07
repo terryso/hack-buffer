@@ -64,6 +64,17 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             </div>
           </div>
           <div className="flex items-center gap-4 text-muted-foreground">
+            <a
+              href="https://github.com/terryso/hack-buffer"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="View source / Fork on GitHub"
+              aria-label="View source on GitHub"
+              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+            >
+              <Github className="size-4" />
+              <span className="hidden sm:inline text-[11px] font-bold tracking-wide">FORK</span>
+            </a>
             <button
               onClick={() => setPalette(true)}
               className="hidden sm:inline-flex items-center gap-1.5 border border-border px-2 py-0.5 rounded hover:text-foreground hover:border-accent/50 transition-colors"
@@ -75,6 +86,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               <span>CONNECTED</span>
             </div>
           </div>
+
         </div>
       </nav>
 
