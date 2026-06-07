@@ -9,7 +9,7 @@ import { AI_ENABLED } from "@/lib/ai-flag";
 const PER_PAGE = 10;
 
 const searchSchema = z.object({
-  page: fallback(z.number().int().min(1), 1).default(1),
+  page: fallback(z.number().int().min(1), 1).optional(),
 });
 
 export const Route = createFileRoute("/")({
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const all = getAllPosts();
-  const { page } = Route.useSearch();
+  const { page = 1 } = Route.useSearch();
   const totalPages = Math.max(1, Math.ceil(all.length / PER_PAGE));
   const current = Math.min(Math.max(1, page), totalPages);
   const start = (current - 1) * PER_PAGE;
