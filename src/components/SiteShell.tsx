@@ -106,15 +106,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <span className="hidden md:inline"><kbd className="text-accent">t</kbd> tags</span>
             <span className="hidden md:inline"><kbd className="text-accent">a</kbd> about</span>
             <span className="hidden sm:inline"><kbd className="text-accent">⌘K</kbd> palette</span>
-            <a
-              href="https://github.com/terryso/hack-buffer/fork"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Fork this blog on GitHub"
-              className="hidden sm:inline-flex items-center gap-1 hover:text-accent transition-colors"
-            >
-              <span className="text-accent">⑂</span> fork
-            </a>
+            <span className="text-accent/80">UTF-8</span>
+            <span>{now.toTimeString().slice(0, 5)}</span>
+          </div>
+
             <span className="text-accent/80">UTF-8</span>
             <span>{now.toTimeString().slice(0, 5)}</span>
           </div>
