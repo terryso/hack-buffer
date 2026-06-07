@@ -8,19 +8,15 @@
 // posts-sync.server.ts and is only callable from the auth-protected
 // /api/public/sync-posts route.
 import { createServerFn } from "@tanstack/react-start";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
 import { getPostBySlug } from "@/lib/posts";
-import {
-  AiServiceError,
-  embed,
-  indexPost,
-  postFingerprint,
-  vectorLiteral,
-} from "@/lib/posts-ai-core.server";
 
 export const ensurePostIndexed = createServerFn({ method: "POST" })
   .inputValidator((data: { slug: string }) => data)
   .handler(async ({ data }) => {
+    const [{ supabaseAdmin }, { AiServiceError, indexPost, postFingerprint }] = await Promise.all([
+      import("@/integrations/supabase/client.server"),
+      import("@/lib/posts-ai-core.server"),
+    ]);
     const post = getPostBySlug(data.slug);
     if (!post) return { ok: false as const };
     const fp = postFingerprint(post);
@@ -42,6 +38,10 @@ export const ensurePostIndexed = createServerFn({ method: "POST" })
 export const getPostBundle = createServerFn({ method: "GET" })
   .inputValidator((data: { slug: string }) => data)
   .handler(async ({ data }) => {
+    const [{ supabaseAdmin }, { AiServiceError, indexPost, postFingerprint }] = await Promise.all([
+      import("@/integrations/supabase/client.server"),
+      import("@/lib/posts-ai-core.server"),
+    ]);
     const post = getPostBySlug(data.slug);
     if (!post) return { tldr: null, related: [] as RelatedPost[] };
 
@@ -94,6 +94,10 @@ export const searchPosts = createServerFn({ method: "POST" })
     return { query: q };
   })
   .handler(async ({ data }) => {
+    const [{ supabaseAdmin }, { AiServiceError, embed, vectorLiteral }] = await Promise.all([
+      import("@/integrations/supabase/client.server"),
+      import("@/lib/posts-ai-core.server"),
+    ]);
     const q = data.query;
     if (!q) return { results: [] as SearchResult[] };
     try {
