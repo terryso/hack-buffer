@@ -9,7 +9,7 @@ import { AI_ENABLED } from "@/lib/ai-flag";
 const PER_PAGE = 10;
 
 const searchSchema = z.object({
-  page: fallback(z.number().int().min(1), 1).default(1),
+  page: fallback(z.number().int().min(1), 1).optional(),
 });
 
 export const Route = createFileRoute("/")({
