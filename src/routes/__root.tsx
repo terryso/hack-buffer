@@ -1,3 +1,4 @@
+// build: rebuild to re-inject VITE_SUPABASE_* env vars
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
