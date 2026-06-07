@@ -110,9 +110,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             <span>{now.toTimeString().slice(0, 5)}</span>
           </div>
 
-            <span className="text-accent/80">UTF-8</span>
-            <span>{now.toTimeString().slice(0, 5)}</span>
-          </div>
         </div>
       </footer>
 
